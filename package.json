@@ -2,20 +2,14 @@
   "name": "@cucu/keycloak-m2m",
   "version": "0.0.1",
   "description": "Keycloak M2M helpers for NestJS (token cache + outbound interceptor + inbound guard).",
-  "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cucu-team/keycloak-m2m.git"
-  },
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf dist node_modules"
   },
   "dependencies": {
     "axios": "^1.6.8",
@@ -34,11 +28,5 @@
     "@typescript-eslint/eslint-plugin": "^8.4.0",
     "@typescript-eslint/parser": "^8.4.0",
     "@types/passport-jwt": "^4.0.1"
-  },
-
-  "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "prepublishOnly": "npm run build",
-    "lint": "eslint \"src/**/*.ts\" --max-warnings=0"
   }
 }
