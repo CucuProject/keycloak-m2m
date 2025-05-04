@@ -5,7 +5,9 @@
     "outDir": "./dist",
     "moduleResolution": "node",
     "target": "es2021",
-    "module": "commonjs",
+    "module": "CommonJS",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "removeComments": false

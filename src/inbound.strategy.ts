@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
@@ -10,7 +10,7 @@ import jwksRsa from 'jwks-rsa';
  */
 @Injectable()
 export class InboundJwtStrategy extends PassportStrategy(Strategy, 'kc-m2m') {
-  constructor(cfg: ConfigService) {
+  constructor(@Inject(ConfigService) cfg: ConfigService) {
     const issuer = `${cfg.get('KC_SERVER_URL')}/realms/${cfg.get('KC_REALM')}`;
 
     super({
