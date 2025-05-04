@@ -46,19 +46,24 @@ const outbound_interceptor_1 = require("./outbound.interceptor");
 const inbound_guard_1 = require("./inbound.guard");
 const inbound_strategy_1 = require("./inbound.strategy");
 let KeycloakM2MModule = (() => {
-    let _classDecorators = [(0, common_1.Global)(), (0, common_1.Module)({
-            providers: [
-                m2m_service_1.KeycloakM2MService,
-                inbound_strategy_1.InboundJwtStrategy,
-                { provide: core_1.APP_INTERCEPTOR, useClass: outbound_interceptor_1.OutboundJwtInterceptor },
-                { provide: core_1.APP_GUARD, useClass: inbound_guard_1.InboundJwtGuard },
-            ],
-            exports: [m2m_service_1.KeycloakM2MService],
-        })];
+    let _classDecorators = [(0, common_1.Global)(), (0, common_1.Module)({})];
     let _classDescriptor;
     let _classExtraInitializers = [];
     let _classThis;
     var KeycloakM2MModule = _classThis = class {
+        /** Chiama always nella root-module del micro-servizio */
+        static forRoot() {
+            return {
+                module: KeycloakM2MModule,
+                providers: [
+                    m2m_service_1.KeycloakM2MService,
+                    inbound_strategy_1.InboundJwtStrategy,
+                    { provide: core_1.APP_INTERCEPTOR, useClass: outbound_interceptor_1.OutboundJwtInterceptor },
+                    { provide: core_1.APP_GUARD, useClass: inbound_guard_1.InboundJwtGuard },
+                ],
+                exports: [m2m_service_1.KeycloakM2MService],
+            };
+        }
     };
     __setFunctionName(_classThis, "KeycloakM2MModule");
     (() => {
